@@ -1,31 +1,50 @@
 <template>
-  <div :class="nameClass">
-    {{ name }}
-  </div>
-  <input :type="type" :value="name"> 
-  <!---속성은 다 bind 가능, v-bind:속성값 => :속성값으로 축약 가능-->
-  <button class="btn btn-primary" @click="updateName">Click</button> 
-  <!--v-onclick => @로 축약 가능-->
+  <div class="container">
+    <h2>To-do List</h2>
+    <form @submit.prevent="onSubmit" class="d-flex">
+      <div class="flex-grow-1 mr-2">
+        <input class="form-control" type="text" v-model="todo" placeholder="Type new to-do">
+      </div>
+      <div>
+        <button class="btn btn-primary" type="submit">Add</button>
+      </div>
+    </form>
+    <!-- {{ todos }} -->
+      <div v-for="todo in todos" :key="todo.id" class="card mt-2">
+        <div class="card-body p-2">
+          {{ todo.subject }}
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
 import { ref } from "vue";
+
 export default {
   setup() {
-    const name = ref('Happy')
-    const type = ref('number')
-    const nameClass = ref('name') // name을 지워주면 style의 color 변경 X
+    const todo = ref("")
+    const todos = ref([
+      { id: 1, subject: "노트북 사기"},
+      { id: 2, subject: "키보드 사기"},
+    ]);
 
-    const updateName = () => {
-      name.value = 'Corder'
-      type.value = 'text'
+    console.log(todos);
+
+    const onSubmit = () => {
+      // e.preventDefault();
+      todos.value.push({
+        id: Date.now(),
+        subject: todo.value,
+      }
+      );
     };
 
+
     return {
-      name,
-      updateName,
-      type,
-      nameClass,
+      todo,
+      todos,
+      onSubmit,
     };
   },
 };
