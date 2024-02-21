@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div :class="nameClass">
+    {{ name }}
+  </div>
+  <input :type="type" :value="name"> 
+  <!---속성은 다 bind 가능, v-bind:속성값 => :속성값으로 축약 가능-->
+  <button class="btn btn-primary" @click="updateName">Click</button> 
+  <!--v-onclick => @로 축약 가능-->
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import { ref } from "vue";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  setup() {
+    const name = ref('Happy')
+    const type = ref('number')
+    const nameClass = ref('name') // name을 지워주면 style의 color 변경 X
+
+    const updateName = () => {
+      name.value = 'Corder'
+      type.value = 'text'
+    };
+
+    return {
+      name,
+      updateName,
+      type,
+      nameClass,
+    };
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.name {
+  color: red;
 }
 </style>
