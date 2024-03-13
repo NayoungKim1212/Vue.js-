@@ -36,3 +36,48 @@
 
   #### 1.1 Vite 기반의 Vue 프로젝트 생성
   >$ npm create vite@latest
+
+## node_modules 안에 vue 패키지 존재(따로 설치한 vue도 이 안에 존재)
+
+- 다른 패키지 설치 시 package_json dependencies, devDependencies에 추가
+
+## vue component
+
+- template(html), script(js), style(css) 총 3종류
+
+## setup() 함수
+
+- Vue3의 Composition API에서 사용되는 함수
+
+   1. component 내부에서 사용
+   2. component 데이터, 메서드 등을 정의하고 반환하는 역할
+   3. 함수는 component가 생성될 때 호출되며, 컴포넌트의 초기화 작업을 수행
+
+## Const
+
+- 상수를 선언할 때 사용
+  
+  1. 한 번 할당된 값 변경 불가능
+  2. 한 번 값을 할당하면 그 후에는 재할당 불가능
+  3. 블록 범위로 제한
+  4. 변수로 선언되고 초기화 되지 않으면 오류 발생
+ex)
+Const number = 3.14
+number = 3; // error 발생 why? 상수라 재할당이 불가능하기 때문
+
+## let
+
+- 변수를 선언할 때 사용
+  
+  1. 변수의 값 변경 가능
+  2. 블록 범위로 제한
+  3. 변수가 선언되고 초기화 하지 않으면 undefined 설정됨
+  ex)
+ ```javascript
+        let count = 0;
+        count = 1; // 가능
+````
+
+## Var
+
+- 재사용 가능
