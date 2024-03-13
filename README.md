@@ -43,7 +43,11 @@
 
 ## vue component
 
-- template(html), script(js), style(css) 총 3종류
+- template(html)
+ 
+- script(js)
+  
+- style(css) 총 3종류
 
 ## setup() 함수
 
